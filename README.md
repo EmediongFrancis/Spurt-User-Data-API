@@ -26,57 +26,132 @@ This is a Node.js API that provides insights into user data, including aggregate
     ```bash
     node app.js
 
+> The API will be running on http://localhost:3000.
+
 ## API Endpoints
 
 - /api/users/insights
+
+    > http://localhost:3000/api/users/insights
 
     Method: *GET*
 
     Description: Retrieves aggregate insights on user activity.
 
-### Response Example:
+### Response:
 
 ```json
         {
-        "activitySummary": {
-            "total_users": 100,
-            "total_posts": 12345,
-            "avg_posts": 123.45
-        },
-        "genderDistribution": [
-            { "gender": "Male", "count": 50 },
-            { "gender": "Female", "count": 50 }
-        ],
-        "recentActivity": [
-            { "full_name": "John Doe", "last_active": "2024-11-29" }
-        ]
+  "activitySummary": {
+    "total_users": 500,
+    "total_posts": 251416,
+    "avg_posts": 502.83
+  },
+  "genderDistribution": [
+    {
+      "gender": "Agender",
+      "count": 5
+    },
+    {
+      "gender": "Bigender",
+      "count": 7
+    },
+    {
+      "gender": "Female",
+      "count": 221
+    },
+    {
+      "gender": "Genderfluid",
+      "count": 9
+    },
+    {
+      "gender": "Genderqueer",
+      "count": 13
+    },
+    {
+      "gender": "Male",
+      "count": 226
+    },
+    {
+      "gender": "Non-binary",
+      "count": 9
+    },
+    {
+      "gender": "Polygender",
+      "count": 10
     }
+  ],
+  "recentActivity": [
+    {
+      "full_name": "Arlan Tancock",
+      "last_active": "2021-12-30"
+    },
+    {
+      "full_name": "Janine Minico",
+      "last_active": "2021-12-29"
+    },
+    {
+      "full_name": "Ade Rauprich",
+      "last_active": "2021-12-29"
+    },
+    {
+      "full_name": "Domini Goodspeed",
+      "last_active": "2021-12-28"
+    },
+    {
+      "full_name": "Tamas Bradford",
+      "last_active": "2021-12-27"
+    },
+    {
+      "full_name": "Edd Klageman",
+      "last_active": "2021-12-27"
+    },
+    {
+      "full_name": "Darnall Oulet",
+      "last_active": "2021-12-27"
+    },
+    {
+      "full_name": "Mile Hawkwood",
+      "last_active": "2021-12-24"
+    },
+    {
+      "full_name": "Ulrick Glasgow",
+      "last_active": "2021-12-24"
+    },
+    {
+      "full_name": "Diane-marie Akitt",
+      "last_active": "2021-12-23"
+    }
+  ]
+}
 ```
 
 
 - /api/users/:user_id
 
+    > http://localhost:3000/api/users/1
+
     Method: *GET*
 
     Description: Retrieves detailed insights for a specific user based on their `user_id`.
 
-### Response Example:
+### Response:
 
 ```json
 {
-    "user": {
-        "full_name": "John Doe",
-        "gender": "Male",
-        "age": 30,
-        "email": "johndoe@example.com",
-        "country": "USA",
-        "job_title": "Software Engineer",
-        "favourite_color": "blue",
-        "last_active": "2024-11-20",
-        "posts_count": 200,
-        "activity_level": "High"
-    },
-    "message": "Insights for user_id: 1"
+  "user": {
+    "full_name": "Emmalyn Dyke",
+    "gender": "Female",
+    "age": 92,
+    "email": "edyke0@etsy.com",
+    "country": "Mexico",
+    "job_title": "Budget/Accounting Analyst I",
+    "favourite_color": "red",
+    "last_active": "2021-09-19",
+    "posts_count": 780,
+    "activity_level": "High"
+  },
+  "message": "Insights for user_id: 1"
 }
 ```
 
