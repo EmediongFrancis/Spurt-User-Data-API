@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  description: "API for accessing insights into user data."
+  version: "1.0.0"
+  title: "User Data API"
+paths:
+  /api/users/insights:
+    get:
+      summary: "Get aggregate insights on user activity"
+      responses:
+        200:
+          description: "Successfully retrieved insights"
+          schema:
+            type: object
+            properties:
+              activitySummary:
+                type: object
+                properties:
+                  total_users:
+                    type: integer
+                  total_posts:
+                    type: integer
+                  avg_posts:
+                    type: number
+                    format: float
+              genderDistribution:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    gender:
+                      type: string
+                    count:
+                      type: integer
+              recentActivity:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    full_name:
+                      type: string
+                    last_active:
+                      type: string
+                      format: date
+  /api/users/{user_id}:
+    get:
+      summary: "Get insights for a specific user"
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "Successfully retrieved user insights"
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  full_name:
+                    type: string
+                  gender:
+                    type: string
+                  age:
+                    type: integer
+                  email:
+                    type: string
+                  country:
+                    type: string
+                  job_title:
+                    type: string
+                  favourite_color:
+                    type: string
+                  last_active:
+                    type: string
+                    format: date
+                  posts_count:
+                    type: integer
+                  activity_level:
+                    type: string
+              message:
+                type: string
+        404:
+          description: "User not found"
